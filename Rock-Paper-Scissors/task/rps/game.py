@@ -1,5 +1,20 @@
 import random
 
+
+def foo_import_file():
+    file = open("rating.txt")
+    for line in file:
+        gamers[line.split()[0]] = line.split()[1]
+    file.close()
+    return
+
+
+gamers = {}
+
+foo_import_file()
+name = input("Enter your name: ")
+print(f"Hello, {name}")
+rating = int(gamers.get(name, 0))
 while True:
     lose_dict = {"rock": "paper", "paper": "scissors", "scissors": "rock"}
     random.seed()
