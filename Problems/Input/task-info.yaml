@@ -4,6 +4,13 @@ files:
   visible: true
   text: '# write the code here'
   learner_created: false
+- name: input.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/8338#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/8338#comment">JetBrains
+    Academy</a></html>
+  time: Sat, 05 Dec 2020 12:11:14 UTC
 record: -1
