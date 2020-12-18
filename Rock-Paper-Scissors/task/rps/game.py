@@ -11,19 +11,24 @@ def foo_import_file():
 
 
 def foo_import_options():
-
+    user_input = input()
+    if len(user_input) == 0:
+        # if no input use standard options list
+        options_list = ["rock", "paper", "scissors"]
+    else:
+        options_list = user_input.split(sep=",")
+    return options_list
 
 
 gamers = {}
-# standart options list
-options_list = ["rock", "paper", "scissors"]
 
 foo_import_file()
-foo_import_options()
 name = input("Enter your name: ")
 print(f"Hello, {name}")
-# import rating from dict gamers, if no in dict rating = 0
+# import rating from dict gamers, if no in dict, rating = 0
 rating = int(gamers.get(name, 0))
+# options from user
+options = foo_import_options()
 
 while True:
     lose_dict = {"rock": "paper", "paper": "scissors", "scissors": "rock"}
