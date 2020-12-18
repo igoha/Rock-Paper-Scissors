@@ -10,9 +10,16 @@ def foo_import_file():
     return
 
 
+def foo_import_options():
+
+
+
 gamers = {}
+# standart options list
+options_list = ["rock", "paper", "scissors"]
 
 foo_import_file()
+foo_import_options()
 name = input("Enter your name: ")
 print(f"Hello, {name}")
 # import rating from dict gamers, if no in dict rating = 0
