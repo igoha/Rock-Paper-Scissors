@@ -1,53 +1,60 @@
 import random
 
 
-def foo_import_file():
+def foo_import_rating():
     # import name and score from file and add to dict gamers
+    gamers = {}
     file = open("rating.txt")
     for line in file:
         gamers[line.split()[0]] = line.split()[1]
     file.close()
-    return
+    name = input("Enter your name: ")
+    print(f"Hello, {name}")
+    # return rating from dict gamers, if name not in dict, rating = 0
+    return int(gamers.get(name, 0))
 
 
-def foo_import_options():
+def foo_input_options():
+    # options from user input
     user_input = input()
-    if len(user_input) == 0:
+    if len(user_input) != 0:
+        # import user input to options list
+        options_list = user_input.split(sep=",")
+    else:
         # if no input use standard options list
         options_list = ["rock", "paper", "scissors"]
-    else:
-        options_list = user_input.split(sep=",")
+    print("Okay, let's start")
     return options_list
 
 
-gamers = {}
-
-foo_import_file()
-name = input("Enter your name: ")
-print(f"Hello, {name}")
-# import rating from dict gamers, if no in dict, rating = 0
-rating = int(gamers.get(name, 0))
-# options from user
-options = foo_import_options()
+# import rating from file
+rating = foo_import_rating()
+# options from user input
+options = foo_input_options()
 
 while True:
-    lose_dict = {"rock": "paper", "paper": "scissors", "scissors": "rock"}
-    random.seed()
-    random_word = random.choice(list(lose_dict.keys()))
-    user_choise = input().lower()
-    if user_choise == "!exit":
+    random_word = random.choice(options)
+    user_word = input().lower()
+    if user_word == "!exit":
         print("Bye!")
         break
-    elif user_choise == "!rating":
+    elif user_word == "!rating":
         print(rating)
-    elif user_choise not in list(lose_dict.keys()):
+    elif user_word not in options:
         print("Invalid input")
     else:
-        lose_word = lose_dict.get(random_word)
-        if user_choise == random_word:
+        user_word_index = options.index(user_word)
+        random_word_index = options.index(random_word)
+        if user_word_index < (len(options) - 1) / 2:
+            user_slice = options[user_word_index + 1:user_word_index + 8]
+            print((len(options) - 1) / 2)
+        else:
+            user_slice = options[user_word_index - 7:user_word_index]
+            print((len(options) - 1) / 2)
+        if user_word == random_word:
             rating += 50
-            print(f"There is a draw {user_choise}")
-        elif user_choise == lose_word:
+            print(f"There is a draw {user_word}")
+        elif user_word == random_word:
             rating += 100
             print(f"Well done. The computer chose {random_word} and failed")
         else:
